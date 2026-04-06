@@ -8,7 +8,7 @@
 
 1. Escribe un programa que realice la siguiente operacion:
 
-![operacion](01-estructuras_secuenciales/operacion_aritmetica.png)
+![operacion](/01-estructuras_secuenciales/operacion.png)
 
 2. Resolver el siguiente problema: 
 
