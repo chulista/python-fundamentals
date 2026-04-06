@@ -1,6 +1,6 @@
 ## Ejercicios
 
-## Table of contents
+## Lista de ejercicios
 - [Operadores Aritmeticos](#operadores-aritmeticos)
 - [Cadenas](#cadenas)
 
