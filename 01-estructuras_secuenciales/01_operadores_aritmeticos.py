@@ -9,7 +9,7 @@ print('division: 10/3 =', (10/3))
 ## division entera
 print('division entera: 10//3 =', (10//3))
 ## modulo
-print('modulo: 10%3 =', (10%3))
+print('resto: 10%3 =', (10%3))
 ## potencia
 print('potencia: 10**3 =', (10**3))
 

@@ -10,6 +10,6 @@ print(num3, '\t-> ', type(num3))
 
 # casteado de tipos
 ## (int -> float)
-print(float(num1), '\t-> ', float(num1))
+print(float(num1), '\t-> ', float(num2))
 ## (float -> int)
 print(int(num1), '\t-> ', int(num2))
