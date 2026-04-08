@@ -1,41 +1,11 @@
-## strings
-print("abcdefg")
+#Ejercicio 1 de cadenas
 
-## substrings
-print("abcdefg"[0:5])
-## de inicio hasta la posicion 2
-print("abcdefg"[:3]) ## abc
-## desde la posicion 3 hasta el final
-print("abcdefg"[3:]) ## desde la posicion 3 en adelante
+cadena = "Te quiero solo como amigo"
 
-## uso de comillas simples y dobles
-cadena = "hola 'carola'"
-print(cadena)
-cadena2 = 'hola "carola"'
-print(cadena2)
+print(cadena[:2])
 
-## concatenacion
-nombre = "ivan"
-apellido = "moreno"
-print(nombre + " " + apellido)
+print(cadena[-3:])  
 
-letra = 'a '
-print(letra * 5)
+print(cadena[::2])
 
-## print de datos NO compatibles
-# print( 1 + 'a') ## ERROR: unsupported operand type(s) for +: 'int' and 'str'
-print( str(1) + ' a')
-
-## formato de cadenas
-# Minusculas
-cadena3 = 'HoLa CoMO Va?'
-print('original -> ', cadena3)
-print('minuscula -> ', cadena3.lower())
-# Mayusculas
-print('mayuscula -> ', cadena3.upper())
-## Capitalize
-print('capitalize -> ', cadena3.capitalize())
-## Title
-print('title -> ', cadena3.title())
-## Swapcase
-print('title -> ', cadena3.swapcase())
+print(cadena[::-1])
