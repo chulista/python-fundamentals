@@ -1,18 +1,15 @@
-while True:
+#Ejercicio 1 de Entradas por teclado
 
-    nombre = input("Ingrese su nombre: ").strip().capitalize()
-    if nombre.isalpha():
-        break
-    else:
-        print("NOMBRE IVALIDO")
+a = float(input("Inresa un valor a 'a': "))
+b = float(input("Inresa un valor a 'b': "))
+c = float(input("Inresa un valor a 'c': "))
 
-while True:
-    
-    edad = input("Ingrese su edad como numero entero: ").strip()
-    if edad.isdigit() and len(edad) <= 2:
-        break
-    else:
-        print("EDAD INVALIDA O MAYOR A 2 DIGITOS")
+resolucion = b ** 2 - 4 * a * c
 
-print(f"Nombre: {nombre}")
-print(f"Edad: {edad}")
+print(resolucion)
+
+#Hasta ahi me quede
+
+print("============================")
+
+#Ejerecicio 2 
