@@ -1,4 +1,9 @@
-nombre = input('Ingrese su nombre: ') ## input() reconoce entrada por teclado
-edad = int(input('Ingrese su edad: '))
+vocal = input("Ingrese una vocal en minuscula: ")
+letra_m = input("Ingrese una letra en mayuscuala: ")
 
-print('hola {}! Tu edad es: {}'.format(nombre, edad))
+paso_ma = vocal.upper()
+paso_mi = letra_m.lower()
+
+mostrar = paso_ma + " " + paso_mi
+
+print(mostrar)
