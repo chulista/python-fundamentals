@@ -1,10 +1,10 @@
 #Ejercicio 1
 
+'''
 numero = int(input("Ingrese un numero que desee multiplicar: "))
 for i in range(1, 11):
     print(f"{numero} x {i} = {numero * i}")
-
-
+'''
 
 #Ejercicio 2
 

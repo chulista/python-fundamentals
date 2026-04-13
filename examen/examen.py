@@ -17,7 +17,62 @@ SISTEMA DE CONTROL DE INVENTARIO
 7. Actualizacion de Stock (Venta/Ingreso)
 8. Salir
 '''
+herramientas = []
+existencias = []
 
+while True:
+    print("""
+          1. Carga Inicial de Herramientas
+          2. Carga de Existencias
+          3. Visualización de Inventario
+          4. Consulta de Stock
+          5. Reporte de Agotados
+          6. Alta de Nuevo Producto
+          7. Actualización de Stock (Venta/Ingreso)
+          8. Salir
+          """)
+    opcion = input("Ingrese la opcion que desee: ")
+
+    match opcion:
+        case "1":
+            
+            cantidad_herramientas = input("Ingrese la cantidad de herramientas que desea ingresar: ")
+            if not cantidad_herramientas.isdigit():
+                print("Solo se pueden ingresar datos numericos")
+                break
+            cantidad = int(cantidad_herramientas)
+            if cantidad == 0:
+                print("No se puede ingresar 'cero' herramientas")
+
+            cantidad_herramientas_ingresadas = 0 
+# se debe seguir pidiendo herramientas hasta completar la cantidad especificada por el usuario.
+
+            while cantidad_herramientas_ingresadas < cantidad:
+                herramienta_ingresada = input(f"Ingrese la herramienta numero {cantidad_herramientas_ingresadas + 1}: ").lower()
+                if herramienta_ingresada in herramientas:
+                    print("La herramienta ya esta en el inventario")
+                else:
+                    herramientas.append(herramienta_ingresada)
+                    cantidad_herramientas_ingresadas += 1  
+                    print("Herramientas ingresadas al inventario correctamente")
+
+        case "2":
+            pass
+        case "3":
+            pass
+        case "4":
+            pass
+        case "5":
+            pass
+        case "6":
+            pass
+        case "7":
+            pass
+        case "8":
+            print("Se ha cerrado la aplicacion")
+            break
+        case _:
+            print("La opcion ingresada es incorrecta")
 
 ####
 ## FUNCIONALIDADES
