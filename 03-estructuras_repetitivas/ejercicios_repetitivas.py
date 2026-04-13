@@ -1,19 +1,10 @@
 #Ejercicio 1
 
-'''
 numero = int(input("Ingrese un numero que desee multiplicar: "))
+for i in range(1, 11):
+    print(f"{numero} x {i} = {numero * i}")
 
-print(f"{numero} x 1 = {numero * 1}")
-print(f"{numero} x 2 = {numero * 2}")
-print(f"{numero} x 3 = {numero * 3}")
-print(f"{numero} x 4 = {numero * 4}")
-print(f"{numero} x 5 = {numero * 5}")
-print(f"{numero} x 6 = {numero * 6}")
-print(f"{numero} x 7 = {numero * 7}")
-print(f"{numero} x 8 = {numero * 8}")
-print(f"{numero} x 9 = {numero * 9}")
-print(f"{numero} x 10 = {numero * 10}")
-'''
+
 
 #Ejercicio 2
 
@@ -26,5 +17,8 @@ for i in range (1, edad + 1):
 
 #Ejercicio 3 
 
-for i in range(1, 11):
-    print(i)
+print("Este no se como se hace")
+
+#Ejercicio 4
+
+print("Este tampoco")
