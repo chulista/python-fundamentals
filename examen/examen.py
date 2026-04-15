@@ -35,37 +35,105 @@ while True:
 
     match opcion:
         case "1":
-            
-            cantidad_herramientas = input("Ingrese la cantidad de herramientas que desea ingresar: ")
-            if not cantidad_herramientas.isdigit():
-                print("Solo se pueden ingresar datos numericos")
+            cantidad = 0
+            cantidad_herramientas_ingresadas = 0
+
+            while True: 
+                cantidad_herramientas = input("Ingrese la cantidad de herramienta/as que desea ingresar: ")
+                
+                if not cantidad_herramientas.isdigit():
+                    print("Solo se pueden ingresar datos numericos o mayores cero")
+                    continue
+
+                cantidad = int(cantidad_herramientas)
+                
+                if cantidad == 0:
+                    print("No se puede ingresar 'cero' herramientas")
+                    continue
                 break
-            cantidad = int(cantidad_herramientas)
-            if cantidad == 0:
-                print("No se puede ingresar 'cero' herramientas")
 
-            cantidad_herramientas_ingresadas = 0 
-# se debe seguir pidiendo herramientas hasta completar la cantidad especificada por el usuario.
-
+#Se debe seguir pidiendo herramientas hasta completar la cantidad especificada por el usuario.
             while cantidad_herramientas_ingresadas < cantidad:
-                herramienta_ingresada = input(f"Ingrese la herramienta numero {cantidad_herramientas_ingresadas + 1}: ").lower()
-                if herramienta_ingresada in herramientas:
+                herramienta_ingresada = input(f"Ingrese la herramienta numero {cantidad_herramientas_ingresadas + 1}: ").strip().lower()
+                
+                if not herramienta_ingresada.isalpha():
+                    print("El nombre de la herramienta solo puede contener letras")
+                    continue
+                elif herramienta_ingresada in herramientas:
                     print("La herramienta ya esta en el inventario")
                 else:
                     herramientas.append(herramienta_ingresada)
+                    existencias.append(0)
                     cantidad_herramientas_ingresadas += 1  
-                    print("Herramientas ingresadas al inventario correctamente")
+                    print("Herramienta/as ingresada al inventario correctamente")
 
         case "2":
-            pass
+            if not herramientas:
+                print("No hay herrmientas en el inventario")
+                continue
+            else:
+                for i in range(len(herramientas)):
+                    while True:
+                        existencia = input(f"Ingrese existencias de '{herramientas[i]}': ")
+                        if not existencia.isdigit():
+                            print("Solo se pueden ingresar datos numericos")
+                            continue
+                        if int(existencia) == 0:
+                            print("No puede ingresar 0 existencias")
+                            continue
+                        existencias[i] = int(existencia)
+                        break
+                print("Se ingresaron las existencias correctamente")                    
         case "3":
-            pass
+            if not herramientas:
+                print("No hay herramientas en el inventario")
+                continue
+            else:
+                print("\n--- INVENTARIO ---")
+                for i in range(len(herramientas)):
+                    print(f"Herramienta: {herramientas[i]} | Existencias: {existencias[i]}")
+
         case "4":
-            pass
+            if not herramientas:
+                print("No hay herramientas en el inventario")
+                continue
+            busqueda = input("Ingrese la herramienta que desee: ").strip().lower()
+            if busqueda in herramientas:
+                i = herramientas.index(busqueda)
+                print(f"Herramienta: {herramientas[i]} | Existencias: {existencias[i]}")
+            else:
+                print("La herramienta no se encuentra en el inventario")
+            
         case "5":
-            pass
+            if not herramientas:
+                print("No hay herramientas en el inventario")
         case "6":
-            pass
+            nueva = input("Ingrese el nombre de la nueva herramienta: ").strip().lower()
+    
+            if nueva == "":
+                print("El nombre no puede estar vacio")
+                continue
+            if not nueva.isalpha():
+                print("El nombre de la herramienta solo puede contener letras")
+                continue
+            if nueva in herramientas:
+                print("La herramienta ya existe en el inventario")
+                continue
+    
+            while True:
+                stock = input(f"Ingrese el stock inicial para '{nueva}': ")
+                if not stock.isdigit():
+                    print("Solo se pueden ingresar datos numericos")
+                    continue
+                if int(stock) < 0:
+                    print("El stock no puede ser negativo")
+                    continue
+                break
+    
+            herramientas.append(nueva)
+            existencias.append(int(stock))
+            print("Herramienta agregada correctamente")
+           
         case "7":
             pass
         case "8":
