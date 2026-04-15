@@ -67,7 +67,7 @@ while True:
                     cantidad_herramientas_ingresadas += 1  
                     print("Herramienta/as ingresada al inventario correctamente")
 
-        case "2":
+        case "2": #El case 2 se encarga de agregar existencias a herramientas ya existentes
             if not herramientas:
                 print("No hay herrmientas en el inventario")
                 continue
@@ -83,8 +83,9 @@ while True:
                             continue
                         existencias[i] = int(existencia)
                         break
-                print("Se ingresaron las existencias correctamente")                    
-        case "3":
+                print("Se ingresaron las existencias correctamente")  
+
+        case "3": #Muestra el inventario al usuario
             if not herramientas:
                 print("No hay herramientas en el inventario")
                 continue
@@ -93,35 +94,41 @@ while True:
                 for i in range(len(herramientas)):
                     print(f"Herramienta: {herramientas[i]} | Existencias: {existencias[i]}")
 
-        case "4":
+        case "4": #Consulta de stock
             if not herramientas:
                 print("No hay herramientas en el inventario")
                 continue
-            busqueda = input("Ingrese la herramienta que desee: ").strip().lower()
-            if busqueda in herramientas:
-                i = herramientas.index(busqueda)
+            herramienta_buscar = input("Ingrese la herramienta que desee: ").strip().lower()
+            if herramienta_buscar in herramientas:
+                i = herramientas.index(herramienta_buscar)
                 print(f"Herramienta: {herramientas[i]} | Existencias: {existencias[i]}")
             else:
                 print("La herramienta no se encuentra en el inventario")
             
-        case "5":
+        case "5": #Lista las herramientas con 0 existencias
             if not herramientas:
                 print("No hay herramientas en el inventario")
-        case "6":
-            nueva = input("Ingrese el nombre de la nueva herramienta: ").strip().lower()
+                continue
+            print("LISTA DE AGOTADOS")
+            for i in range(len(existencias)):
+                if existencias[i] == 0:
+                    print(f"Herramienta: {herramientas[i]} | Existencias: {existencias[i]}")
+
+        case "6": #Permite agregar UN producto con su stock inicial
+            nombre_herramienta = input("Ingrese el nombre de la nueva herramienta: ").strip().lower()
     
-            if nueva == "":
-                print("El nombre no puede estar vacio")
+            if nombre_herramienta == "":
+                print("El nombre no puede estar vacio. Volviendo al menu...")
                 continue
-            if not nueva.isalpha():
-                print("El nombre de la herramienta solo puede contener letras")
+            if not nombre_herramienta.isalpha():
+                print("El nombre de la herramienta solo puede contener letras. Volviendo al menu...")
                 continue
-            if nueva in herramientas:
-                print("La herramienta ya existe en el inventario")
+            if nombre_herramienta in herramientas:
+                print("La herramienta ya existe en el inventario. Volviendo al menu...")
                 continue
     
             while True:
-                stock = input(f"Ingrese el stock inicial para '{nueva}': ")
+                stock = input(f"Ingrese el stock inicial para '{nombre_herramienta}': ")
                 if not stock.isdigit():
                     print("Solo se pueden ingresar datos numericos")
                     continue
@@ -130,13 +137,60 @@ while True:
                     continue
                 break
     
-            herramientas.append(nueva)
+            herramientas.append(nombre_herramienta)
             existencias.append(int(stock))
             print("Herramienta agregada correctamente")
            
-        case "7":
-            pass
-        case "8":
+        case "7": #Actualización de Stock (Venta/Ingreso):
+            if not herramientas:
+                print("No hay herramientas en el inventario")
+                continue
+            
+            while True:
+
+                opcion_stock = input("""Ingrese la opcion que desee
+                            1. Venta
+                            2. Ingreso
+                                    """).strip().lower()
+                
+                if opcion_stock == "venta":
+                    venta_herramienta = input("Ingrese la herramienta que desee vender: ").strip().lower()
+                    
+                    if venta_herramienta.isdigit():
+                        print("Solo puede ingresar dato de tipo letra")
+                        
+                    elif venta_herramienta == "":
+                        print("No se puede ingresar espacios")
+
+                    elif not venta_herramienta in herramientas:
+                        print("La herramienta no se encuentra en el inventario")
+                        
+                    else:
+                        cantidad_vender = input("Ingrese la cantidad de herramientas que desea vender: ")
+                        if not cantidad_vender.isdigit():
+                            print("Solo se pueden ingresar datos numericos")
+                        elif cantidad_vender == "":
+                            print("No se puede ingresar espacios")
+                        else:
+                            i = herramientas.index(venta_herramienta)
+                            cantidad = int(cantidad_vender)
+                            
+                            if existencias[i] >= cantidad:
+                                existencias[i] -= cantidad
+                                print("Herramientas vendidas correctamente")
+                                break
+                            else:
+                                print("Cantidad insuficiente para vender")
+
+
+                            
+                elif opcion_stock == "ingreso":
+                    pass
+                else:
+                    print("Opcion incorrecta")
+                    continue
+                
+        case "8": #Corta el programa
             print("Se ha cerrado la aplicacion")
             break
         case _:
