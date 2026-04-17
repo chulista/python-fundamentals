@@ -173,7 +173,22 @@ while True:
 
                 if cambiar not in habitaciones:
                     print("La habitacion no existe")
+                    continue
 
+                while True:
+                    opcion_cambiar = input(f"""Ingrese el nuevo estado de {cambiar}:    
+                                        • Libre
+                                        • Ocupada 
+                                        """).strip().lower()
+                    if opcion_cambiar == "libre":
+                        pass
+                    elif opcion_cambiar == "ocupada":
+                        pass
+                    else:
+                        print("Opcion incorrecta...")
+                        continue
+                    break
+                
         case "8":
             print("Saliendo de la aplicacion...")
             break
