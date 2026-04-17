@@ -47,7 +47,7 @@ while True:
                             continue
 
                         habitaciones.append(habitacion)
-                        estados.append("ocupada")
+                        estados.append("libre")
                         
                         break
                 print("Habitaciones agregadas correctamente")
@@ -61,14 +61,14 @@ while True:
             for i in range(len(habitaciones)):
                 while True:
                     estado = input(f"""Ingrese el estado de la habitacion {habitaciones[i]}: 
-                            0. Libre
-                            1. Ocupada
+                            • Libre
+                            • Ocupada
                             """).strip().lower()
-                    if estado == "libre":
+                    if estado == "libre" or estado == "0":
                         estados[i] = "libre"
                         print("Estado de habitaciones actualizado correctamente")
                         break
-                    elif estado == "ocupada":
+                    elif estado == "ocupada" or estado == "1":
                         estados[i] = "ocupada"
                         print("Estado de habitaciones actualizado correctamente")
                         break
@@ -106,12 +106,76 @@ while True:
                     break
 
         case "5":
-            pass
+
+            if not habitaciones:
+                print("Todavia no hay habitaciones ingresadas")
+                continue
+            while True:
+                ver_estados = input(f"""Ingrese el tipo de estado que desea ver:
+                                • Libres
+                                • Ocupadas
+                                """).strip().lower()
+                if ver_estados == "libres" or ver_estados == "0":
+                    pass
+                elif ver_estados == "ocupadas" or ver_estados == "1":
+                    pass
+                else:
+                    print("Opcion incorrecta")
+
         case "6":
-            pass
+            
+            numero_habitacion = input("Ingrese el numero de la nueva habitacion: ").strip()
+    
+            if numero_habitacion == "":
+                print("Debe ingresar datos. Volviendo al menu...")
+                continue
+            if not numero_habitacion.isdigit():
+                print("La habitacion a ingresar debe ser numerica. Volviendo al menu...")
+                continue
+            numero_habitacion = int(numero_habitacion)
+            if numero_habitacion <= 100:
+                print("La habitacion a ingresar debe ser mayor a '100'")
+                continue
+            if numero_habitacion in habitaciones:
+                print("La habitacion ya esta ingresada. Volviendo al menu...")
+                continue
+
+            while True:
+                nueva_estado = input(f"""Ingrese el esatdo de la habitacion {numero_habitacion}:
+                                    • Libre
+                                    • Ocupada 
+                                    """).strip().lower()
+                if nueva_estado == "libre":
+                    habitaciones.append(numero_habitacion)
+                    estados.append(nueva_estado)
+                    print("Habitacion agregada correctamente")
+                elif nueva_estado == "ocupada":
+                    habitaciones.append(numero_habitacion)
+                    estados.append(nueva_estado)
+                    print("Habitacion agregada correctamente")
+                else:
+                    print("Opcion incorrecta...")
+                break
+
         case "7":
-            pass
+
+            if not habitaciones:
+                print("Todavia no hay habitaciones ingresadas")
+                continue
+            while True:
+                cambiar = input("Ingrese la habitacion que desea cambiar el estado: ")
+                
+                if not cambiar.isdigit():
+                    print("Debe ingresar numeros")
+                    continue
+
+                cambiar = int(cambiar)
+
+                if cambiar not in habitaciones:
+                    print("La habitacion no existe")
+
         case "8":
+            print("Saliendo de la aplicacion...")
             break
         case _:
             print("Ingrese una opcion valida")
