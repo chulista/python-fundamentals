@@ -115,12 +115,30 @@ while True:
                                 • Libres
                                 • Ocupadas
                                 """).strip().lower()
-                if ver_estados == "libres" or ver_estados == "0":
-                    pass
-                elif ver_estados == "ocupadas" or ver_estados == "1":
-                    pass
+                if ver_estados == "libres":
+                    resultado = []
+                    for i in range(len(habitaciones)):
+                        if estados[i] == "libre":
+                            resultado.append(habitaciones[i])
+                    if resultado:
+                        for h in resultado:
+                            print(f"Habitacion {h}: libre")
+                    else:
+                        print("No hay habitaciones libres")
+                    break
+                elif ver_estados == "ocupadas":
+                    resultado = []
+                    for i in range(len(habitaciones)):
+                        if estados[i] == "ocupada":
+                            resultado.append(habitaciones[i])
+                    if resultado:
+                        for h in resultado:
+                            print(f"Habitacion {h}: ocupada")  
+                    else:
+                        print("No hay habitaciones ocupadas") 
+                    break     
                 else:
-                    print("Opcion incorrecta")
+                    print("Opcion incorrecta...")
 
         case "6":
             
@@ -141,7 +159,7 @@ while True:
                 continue
 
             while True:
-                nueva_estado = input(f"""Ingrese el esatdo de la habitacion {numero_habitacion}:
+                nueva_estado = input(f"""Ingrese el estado de la habitacion {numero_habitacion}:
                                     • Libre
                                     • Ocupada 
                                     """).strip().lower()
@@ -149,13 +167,15 @@ while True:
                     habitaciones.append(numero_habitacion)
                     estados.append(nueva_estado)
                     print("Habitacion agregada correctamente")
+                    break
                 elif nueva_estado == "ocupada":
                     habitaciones.append(numero_habitacion)
                     estados.append(nueva_estado)
                     print("Habitacion agregada correctamente")
+                    break
                 else:
                     print("Opcion incorrecta...")
-                break
+                
 
         case "7":
 
@@ -174,6 +194,7 @@ while True:
                 if cambiar not in habitaciones:
                     print("La habitacion no existe")
                     continue
+                    
 
                 while True:
                     opcion_cambiar = input(f"""Ingrese el nuevo estado de {cambiar}:    
@@ -181,14 +202,19 @@ while True:
                                         • Ocupada 
                                         """).strip().lower()
                     if opcion_cambiar == "libre":
-                        pass
+                        i = habitaciones.index(cambiar)
+                        estados[i] = opcion_cambiar
+                        print(f"Estado de la habitacion {cambiar} actualizado a '{opcion_cambiar}'")
+                        break
                     elif opcion_cambiar == "ocupada":
-                        pass
+                        i = habitaciones.index(cambiar)
+                        estados[i] = opcion_cambiar
+                        print(f"Estado de la habitacion {cambiar} actualizado a '{opcion_cambiar}'")
+                        break
                     else:
                         print("Opcion incorrecta...")
-                        continue
-                    break
-                
+                break        
+
         case "8":
             print("Saliendo de la aplicacion...")
             break

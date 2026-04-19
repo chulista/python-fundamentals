@@ -16,7 +16,9 @@ while True:
     opcion = input("\nIngrese la opcion que desee: ")
 
     match opcion:
+        
         case "1":
+
             while True: 
                 cantidad = input("Ingrese la cantidad ordenes que desea ingresar: ")
                 if not cantidad.isdigit():
@@ -87,9 +89,44 @@ while True:
                 print(f"Orden {ordenes[i]} | Tiempo estimado {horas[i]}")
 
         case "5":
-            pass
+
+            if not ordenes:
+                print("No hay ordenes ingresadas")
+                continue
+            print("\n===ORDENES PENDIENTE DE DIAGNOSTICO===")
+            encontradas = False
+            for i in range(len(horas)):
+                if horas[i] == 0:
+                    print(f"{ordenes[i]} | Pendiente de diagnostico")
+                    encontradas = True
+            
+            if not encontradas:
+                print("No hay pendientes de diagnostico")    
+            
         case "6":
-            pass
+
+            while True:
+                una_orden = input("Ingrese una nueva orden: ")
+                if not una_orden.isdigit():
+                    print("Debe ingresar numeros mayores a '0'")
+                elif una_orden == "0":
+                    print("Debe ingresar numeros mayores a '0'")
+                elif f"ORD-{una_orden}" in ordenes:
+                    print("Esa orden ya existe")
+                else:
+                    ordenes.append(f"ORD-{una_orden}")
+                    horas.append(0)
+                    break
+            
+            while True:
+                horas_uno = input(f"\nIngrese la cantidad de horas que desee para ORD-{una_orden}: ")
+                if not horas_uno.isdigit():
+                    print("Debe ingresar numeros enteros...")
+                    continue
+                horas[-1] = int(horas_uno)
+                print(f"\nORD-{una_orden} ingresada correctamente con {horas_uno} horas")
+                break
+
         case "7":
             pass
         case "8":
