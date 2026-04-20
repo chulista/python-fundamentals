@@ -61,7 +61,7 @@ while True:
                     elif ingreso_horas == "0":
                         print("Debe ingresar numeros enteros mayores a '0'")
                         continue
-                    ingreso_horas = float(ingreso_horas)
+                    ingreso_horas = int(ingreso_horas)
                     
                     horas[i] = ingreso_horas
                     print("Horas agregadas correctamente")
@@ -86,7 +86,7 @@ while True:
                 print("La orden no existe")
             else:
                 i = ordenes.index(consulta)
-                print(f"Orden {ordenes[i]} | Tiempo estimado {horas[i]}")
+                print(f"Orden {ordenes[i]} | Tiempo estimado: {horas[i]} horas")
 
         case "5":
 
@@ -128,7 +128,27 @@ while True:
                 break
 
         case "7":
-            pass
+
+            if not ordenes:
+                print("No hay ordenes ingresadas")
+                continue
+
+            while True:
+                cambiar = input("\nIngrese la orden que desea actualizar, ej; ORD-numero: ")
+                if cambiar not in ordenes:
+                    print("La orden no existe...")
+                else:
+                    while True:
+                        cambiar_horas = input(f"Ingrese las nuevas horas de {cambiar}: ")
+                        if not cambiar_horas.isdigit():
+                            print("Solo puede ingresar numeros")
+                        else:
+                            i = ordenes.index(cambiar)
+                            horas[i] = int(cambiar_horas)
+                            print(f"Orden {cambiar} actualizada con {cambiar_horas} horas")
+                            break
+                    break
+
         case "8":
             print("Saliendo de la aplicacion...")
             break
