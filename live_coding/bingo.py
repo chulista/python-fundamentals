@@ -72,6 +72,34 @@ while opcion != "6":
 
             bolillero.remove(bolilla)
 
+            
+            if "X" in carton[0] and "X" in carton[1] and "X" in carton[2] and "X" in carton[3] and "X" in carton[4]:
+                print("Ganaste por fila 1!")
+            elif "X" in carton[5] and "X" in carton[6] and "X" in carton[7] and "X" in carton[8] and "X" in carton[9]:
+                print("Ganaste por fila 2!")
+            elif "X" in carton[10] and "X" in carton[11] and "X" in carton[12] and "X" in carton[13] and "X" in carton[14]:
+                print("Ganaste por fila 3!")
+            elif "X" in carton[15] and "X" in carton[16] and "X" in carton[17] and "X" in carton[18] and "X" in carton[19]:
+                print("Ganaste por fila 4!")
+            elif "X" in carton[20] and "X" in carton[21] and "X" in carton[22] and "X" in carton[23] and "X" in carton[24]:
+                print("Ganaste por fila 5!")
+
+            elif "X" in carton[0] and "X" in carton[5] and "X" in carton[10] and "X" in carton[15] and "X" in carton[20]:
+                print("Ganaste por columna 1!")
+            elif "X" in carton[1] and "X" in carton[6] and "X" in carton[11] and "X" in carton[16] and "X" in carton[21]:
+                print("Ganaste por columna 2!")
+            elif "X" in carton[2] and "X" in carton[7] and "X" in carton[12] and "X" in carton[17] and "X" in carton[22]:
+                print("Ganaste por columna 3!")
+            elif "X" in carton[3] and "X" in carton[8] and "X" in carton[13] and "X" in carton[18] and "X" in carton[23]:
+                print("Ganaste por columna 4!")
+            elif "X" in carton[4] and "X" in carton[9] and "X" in carton[14] and "X" in carton[19] and "X" in carton[24]:
+                print("Ganaste por columna 5!")
+
+            elif "X" in carton[0] and "X" in carton[6] and "X" in carton[12] and "X" in carton[18] and "X" in carton[24]:
+                print("Ganaste por diagonal principal!")
+            elif "X" in carton[4] and "X" in carton[8] and "X" in carton[12] and "X" in carton[16] and "X" in carton[20]:
+                print("Ganaste por diagonal inversa!")
+
             if bolilla in carton:
                 print(f"\t\t\tla bolilla ({bolilla}) ESTÁ en el cartón")
                 indice = carton.index(bolilla) ## en que posicion está este numero?
