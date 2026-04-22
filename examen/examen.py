@@ -149,9 +149,9 @@ while True:
             while True:
 
                 opcion_stock = input("""Ingrese la opcion que desee
-                            1. Venta
-                            2. Ingreso
-                                    """).strip().lower()
+                1. Venta
+                2. Ingreso
+                """).strip().lower()
                 
                 if opcion_stock == "venta":
                     venta_herramienta = input("Ingrese la herramienta que desee vender: ").strip().lower()
@@ -185,7 +185,32 @@ while True:
 
                             
                 elif opcion_stock == "ingreso":
-                    pass
+                    ingreso_herramienta = input("Ingrese la herramienta que desee ingresar: ").strip().lower()
+                    
+                    if ingreso_herramienta.isdigit():
+                        print("Solo puede ingresar dato de tipo letra")
+                        
+                    elif ingreso_herramienta == "":
+                        print("No se puede ingresar espacios")
+
+                    elif not ingreso_herramienta in herramientas:
+                        print("La herramienta no se encuentra en el inventario")
+                        
+                    else:
+                        cantidad_ingresar = input("Ingrese la cantidad de herramientas que desea vender: ")
+                        if not cantidad_ingresar.isdigit():
+                            print("Solo se pueden ingresar datos numericos")
+                        elif cantidad_ingresar == "":
+                            print("No se puede ingresar espacios")
+                        else:
+                            i = herramientas.index(ingreso_herramienta)
+                            cantidad = int(cantidad_ingresar)
+                            
+                            existencias[i] += cantidad
+                            print("Herramientas vendidas correctamente")
+                            break
+                            
+                            
                 else:
                     print("Opcion incorrecta")
                     continue
